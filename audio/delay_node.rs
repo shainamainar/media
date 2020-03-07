@@ -1,4 +1,5 @@
-use node::{AudioNode, AudioParam};
+use node::{AudioNode, AudioParam, AudioNodeEngine};
+use block::{Block, Chunk, Tick};
 
 //akldsjf
 /* pub struct DelayNode{
@@ -18,9 +19,31 @@ impl Default for DelayOptions{
       }
    }
 }
+
 pub(crate) struct DelayNode{
 
 }
 impl DelayNode{
 
+}
+
+impl AudioNodeEngine for DelayNode {
+
+   // Check that the incoming node type is valid
+   fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
+   // Start processing the audio
+   fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
+      // At tick 0, add terh block to the vecdequeue
+
+      // At tick 1, 
+
+      let mut iter = inputs.blocks[0].iter();
+      // While the tick != to tick in the vecdequeue
+      
+
+      
+
+   }
+
+   
 }
