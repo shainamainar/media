@@ -19,16 +19,16 @@ impl Default for DelayOptions{
       }
    }
 }
-
+//Constructor (line 173 DelayNode.cpp)
+//Note: find implementation in servo/servo
 pub(crate) struct DelayNode{
-
+   delayTime: delayTime;
 }
 impl DelayNode{
 
 }
 
 impl AudioNodeEngine for DelayNode {
-
    // Check that the incoming node type is valid
    fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
    // Start processing the audio
