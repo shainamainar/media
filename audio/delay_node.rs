@@ -33,13 +33,24 @@ impl AudioNodeEngine for DelayNode {
    fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
    // Start processing the audio
    fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
-      // At tick 0, add terh block to the vecdequeue
-
-      // At tick 1, 
-
-      let mut iter = inputs.blocks[0].iter();
-      // While the tick != to tick in the vecdequeue
       
+      //t=0;
+      // if t= 0, add the block to the vecdequeue
+      //t++
+      // Output similar block on silence
+
+      //input(t) = t - delaytime
+      // While the input(t) != to tick in the vecdequeue, keep iterating through t
+      
+      //input(t) = tick - delaytime
+      //t++
+      //  return block of silence
+         
+
+      
+
+      // Otherwise output the block in the vecdeq
+
 
       
 
