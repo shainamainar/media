@@ -9,7 +9,7 @@ pub struct PeriodicWaveOptions {
     // XXX https://webaudio.github.io/web-audio-api/#dictdef-periodicwaveoptions
 }
 #[derive(Clone, Debug)]
-pub enum OscillatorType {
+pub enum OscillatorType {  
     Sine,
     Square,
     Sawtooth,
