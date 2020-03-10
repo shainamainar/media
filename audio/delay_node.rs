@@ -1,7 +1,6 @@
 use node::{AudioNode, AudioParam, AudioNodeEngine};
 use block::{Block, Chunk, Tick};
 
-//akldsjf
 /* pub struct DelayNode{
    pub c: BaseAudioContext,
    pub option: DelayOptions
@@ -33,8 +32,9 @@ impl AudioNodeEngine for DelayNode {
    fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
    // Start processing the audio
    fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
-      
-      //t=0;
+      let queue = VecDeque<(Tick, Block)>;
+      //t may not always start at 0
+      //use the tick from the frame in BlockInfo
       // if t= 0, add the block to the vecdequeue
       //t++
       // Output similar block on silence
