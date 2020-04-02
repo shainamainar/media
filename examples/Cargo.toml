@@ -139,3 +139,7 @@ path = "wave_shaper.rs"
 name = "media_element_source_node"
 path = "media_element_source_node.rs"
 required-features = [ "player" ]
+
+[[bin]]
+name = "delay"
+path = "delay.rs"
