@@ -1,3 +1,11 @@
+//make sure that the directory is set up for cargo nightly by running
+//$ rustup override set nightly
+//run with command
+//$cargo ex delay
+
+
+//currently just plays a sound using oscillator node, need to add using the 
+//delay node
 extern crate servo_media;
 extern crate servo_media_auto;
 
