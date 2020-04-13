@@ -1,7 +1,6 @@
 use node::{AudioNode, AudioParam, AudioNodeEngine};
 use block::{Block, Chunk, Tick};
 
-//akldsjf
 /* pub struct DelayNode{
    pub c: BaseAudioContext,
    pub option: DelayOptions
@@ -19,22 +18,49 @@ impl Default for DelayOptions{
       }
    }
 }
-
+//Constructor (line 173 DelayNode.cpp)
+//Note: find implementation in servo/servo
 pub(crate) struct DelayNode{
+   delayTime: Option<Tick>;
+   channel_info: ChannelInfo,
 
 }
 impl DelayNode{
+   pub fn new(options: DelayNodeOptions, channel_info: ChannelInfo) -> Self{
+      Self{
+         channel_info,
+         delay_type: options.delay_type,
+         delayTime: None,
+      }
+   }
 
 }
 
 impl AudioNodeEngine for DelayNode {
-
    // Check that the incoming node type is valid
    fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
    // Start processing the audio
    fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
-      
-      //t=0;
+      inputs.blocks.push(Default::default());
+      let queue = VecDeque<(Tick, Block)>;
+      inputs.blocks[0].explicit_silence();
+      let mut iter = input.blocks[0].iter();
+      while let Some(mut frame) = iter.next(){
+         let tick = frame.tick();
+         if queue.is_empty{
+            queue.push(tick, frame)
+         }
+         else{
+            let tickTime = tick - delayTime;
+            if tickTime == tick{
+               break;
+            }else{
+               
+            }
+         inputs
+      }
+      //t may not always start at 0
+      //use the tick from the frame in BlockInfo
       // if t= 0, add the block to the vecdequeue
       //t++
       // Output similar block on silence
@@ -46,8 +72,6 @@ impl AudioNodeEngine for DelayNode {
       //t++
       //  return block of silence
          
-
-      
 
       // Otherwise output the block in the vecdeq
 
