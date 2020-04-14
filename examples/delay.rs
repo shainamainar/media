@@ -11,6 +11,8 @@ extern crate servo_media_auto;
 
 use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage, AudioScheduledSourceNodeMessage};
 use servo_media::{ClientContextId, ServoMedia};
+use servo_media::audio::delay_node::DelayOptions;
+use servo_media::audio::param::{ParamDir, ParamType, RampKind, UserAutomationEvent};
 use std::sync::Arc;
 use std::{thread, time};
 
@@ -25,11 +27,17 @@ fn run_example(servo_media: Arc<ServoMedia>) {
         Default::default(),
     );
     
+    let mut options = DelayNode::default();
+
+    let delay = context.create_node(AudioNodeInit::DelayNode(options),
+	Default::default());
+    
     // in panner they take the output from oscillator put it through panner
     //then take the output from panner and put it through dest
     //context.connect_ports(osc.output(0), panner.input(0));
     //context.connect_ports(panner.output(0), dest.input(0));
-    context.connect_ports(osc.output(0), dest.input(0));
+    context.connect_ports(osc.output(0), delay.input(0));
+    context.connect_ports(delay.output(0), dest.input(0));
     let _ = context.resume();
 
     context.message_node(
