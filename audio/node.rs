@@ -12,6 +12,7 @@ use param::{Param, ParamRate, ParamType, UserAutomationEvent};
 use std::sync::mpsc::Sender;
 use stereo_panner::StereoPannerOptions;
 use wave_shaper_node::{WaveShaperNodeMessage, WaveShaperNodeOptions};
+use delay_node::DelayOptions;
 
 /// Information required to construct an audio node
 pub enum AudioNodeInit {
@@ -23,7 +24,7 @@ pub enum AudioNodeInit {
     ChannelSplitterNode,
     ConstantSourceNode(ConstantSourceNodeOptions),
     ConvolverNode,
-    DelayNode,
+    DelayNode(DelayOptions),
     DynamicsCompressionNode,
     GainNode(GainNodeOptions),
     IIRFilterNode,

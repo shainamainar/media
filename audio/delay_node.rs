@@ -1,5 +1,7 @@
 use node::{AudioNode, AudioParam, AudioNodeEngine};
 use block::{Block, Chunk, Tick};
+use param::{Param, ParamType};
+use node::{AudioNodeType, ChannelInfo};
 
 /* pub struct DelayNode{
    pub c: BaseAudioContext,
@@ -20,7 +22,9 @@ impl Default for DelayOptions{
 }
 //Constructor (line 173 DelayNode.cpp)
 //Note: find implementation in servo/servo
+#[derive(AudioNodeCommon)]
 pub(crate) struct DelayNode{
+   delay_type: DelayType;
    delayTime: Option<Tick>;
    channel_info: ChannelInfo,
 
