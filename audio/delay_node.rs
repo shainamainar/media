@@ -47,7 +47,7 @@ impl AudioNodeEngine for DelayNode {
    // Start processing the audio
    fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
       inputs.blocks.push(Default::default());
-      let queue = VecDeque<(Tick, Block)>;
+      let queue = VecDeque::<(Tick, Block)>;
       inputs.blocks[0].explicit_silence();
       let mut iter = input.blocks[0].iter();
       while let Some(mut frame) = iter.next(){
@@ -73,7 +73,7 @@ impl AudioNodeEngine for DelayNode {
          fn node_type(&self) -> AudioNodeType {AudioNodeType::DelayNode}
             // Start processing the audio
          fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
-            let queue = VecDeque<(Tick, Block)>;
+            let queue = VecDeque::<(Tick, Block)>;
 
             // Obtain the start and stop times of audio
             if BlockInfo.Tick.tickTime != 0 {
