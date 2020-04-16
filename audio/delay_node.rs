@@ -63,9 +63,10 @@ impl AudioNodeEngine for DelayNode {
                
             }
          inputs
-      }
-    }
- }
+		}
+	  }
+	}
+}
 
       impl AudioNodeEngineP2 for DelayNode {
             // Check that the incoming node type is valid
@@ -74,66 +75,67 @@ impl AudioNodeEngine for DelayNode {
          fn process(&mut self, inputs: Chunk, info: &BlockInfo) -> Chunk {
             let queue = VecDeque<(Tick, Block)>;
 
-               // Obtain the start and stop times of audio
-               if BlockInfo.Tick.tickTime != 0 {
+            // Obtain the start and stop times of audio
+            if BlockInfo.Tick.tickTime != 0 {
                 while let Some(mut frame) = iter.next() {
                   let tick = frame.tick();
-                  if tick < start_at {
-                     continue;
-                  } else if tick > stop_at {
-                     break;
-                  } else {
-                     // Obtain location of delay
-                     inputs.blocks.push(Default::default());
-                     let (start_at, stop_at) = match self(info.frame) {
-                     DelayOptions::Check => {
+					if tick < start_at {
+						continue;
+					} else if tick > stop_at {
+						break;
+					} else {
+						// Obtain location of delay
+						inputs.blocks.push(Default::default());
+						let (start_at, stop_at) = match self(info.frame) {
+						DelayOptions::Check => {
                         return Block;
-                     }
-                     // Insert delay and adjust
-                     DelayNodeOptions::Between(start, end) => (start_at, stop_at) {
-                        while let Some(mut frame) = iter.next(){
-                        let tick = frame.tick();
-                        if queue.is_empty{
-                           queue.push(tick, frame)
-                        }
-                        else{
-                           let tickTime = tick - delayTime;
-                           if tickTime == tick{
-                              break;
-                           }
-                        };
-                     inputs 
-                  }
-               }
-            }
-	}
+						}
+						// Insert delay and adjust
+						DelayNodeOptions::Between(start, end) => (start_at, stop_at) {
+							while let Some(mut frame) = iter.next(){
+								let tick = frame.tick();
+								if queue.is_empty{
+									queue.push(tick, frame)
+								}
+								else{
+									let tickTime = tick - delayTime;
+									if tickTime == tick{
+										break;
+									}
+								};
+							inputs 
+							}
+						}
+						}
             
-            } else {
-               inputs.blocks.push(Default::default());
-               let queue = VecDeque<(Tick, Block)>;
-               inputs.blocks[0].explicit_silence();
-               let mut iter = input.blocks[0].iter();
-               while let Some(mut frame) = iter.next(){
-                  let tick = frame.tick();
-                  if queue.is_empty{
-                     queue.push(tick, frame)
-                  }
-                  else{
-                     let tickTime = tick - delayTime;
-                     if tickTime == tick{
-                        break;
-                     }else{
+					}
+				}					
+			else {
+				inputs.blocks.push(Default::default());
+				let queue = VecDeque<(Tick, Block)>;
+				inputs.blocks[0].explicit_silence();
+				let mut iter = input.blocks[0].iter();
+				while let Some(mut frame) = iter.next(){
+					let tick = frame.tick();
+					if queue.is_empty{
+						queue.push(tick, frame)
+					}
+					else{
+						let tickTime = tick - delayTime;
+						if tickTime == tick{
+							break;
+						}else{
                         
-                     }
-               inputs    
-            	  }
+						}
+					inputs    
+					}
 
-   		}
+				  }
    
-	      }
+			 }
+			}
+		}
 	}
-}
-}
 
 
 
