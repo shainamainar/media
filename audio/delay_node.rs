@@ -1,4 +1,5 @@
-use node::{AudioNode, AudioParam, AudioNodeEngine};
+//use node::{AudioNode, AudioParam, AudioNodeEngine};
+use node::{AudioNodeEngine, AudioNodeMessage, BlockInfo};
 use block::{Block, Chunk, Tick};
 use param::{Param, ParamType};
 use node::{AudioNodeType, ChannelInfo};
@@ -9,14 +10,14 @@ use node::{AudioNodeType, ChannelInfo};
 } */
 
 pub struct DelayOptions{
-   pub maxDelayTime: f32;
-   pub delayTime: f32;
+   pub maxDelayTime: f32,
+   pub delayTime: f32,
 }
 impl Default for DelayOptions{
    fn default() -> Self{
       DelayOptions{
-         maxDelayTime: 1,
-         delayTime: 0,
+         maxDelayTime: 1.0,
+         delayTime: 0.0,
       }
    }
 }
@@ -24,13 +25,13 @@ impl Default for DelayOptions{
 //Note: find implementation in servo/servo
 #[derive(AudioNodeCommon)]
 pub(crate) struct DelayNode{
-   delay_type: DelayType;
-   delayTime: Option<Tick>;
+   delay_type: DelayType,
+   delayTime: Option<Tick>,
    channel_info: ChannelInfo,
 
 }
 impl DelayNode{
-   pub fn new(options: DelayNodeOptions, channel_info: ChannelInfo) -> Self{
+   pub fn new(options: DelayOptions, channel_info: ChannelInfo) -> Self{
       Self{
          channel_info,
          delay_type: options.delay_type,
@@ -63,6 +64,8 @@ impl AudioNodeEngine for DelayNode {
             }
          inputs
       }
+    }
+ }
 
       impl AudioNodeEngineP2 for DelayNode {
             // Check that the incoming node type is valid
@@ -103,6 +106,7 @@ impl AudioNodeEngine for DelayNode {
                   }
                }
             }
+	}
             
             } else {
                inputs.blocks.push(Default::default());
@@ -122,11 +126,16 @@ impl AudioNodeEngine for DelayNode {
                         
                      }
                inputs    
-            }
+            	  }
 
-   }
+   		}
    
+	      }
+	}
 }
+}
+
+
 
 
 
